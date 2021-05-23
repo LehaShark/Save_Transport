@@ -11,7 +11,7 @@ import numpy as np
 from keras_preprocessing.image import ImageDataGenerator
 
 
-model = keras.models.load_model('/home/aigaf/Desktop/GitHub/Save_Transport/save_1.h5')
+model = keras.models.load_model('/home/aigaf/Desktop/Repositories/Save_Transport/main_classifier/save_1.h5')
 
 def create_spectrogram(filename,name):
     plt.interactive(False)
@@ -24,7 +24,7 @@ def create_spectrogram(filename,name):
     S = librosa.feature.melspectrogram(y=clip, sr=sample_rate)
     librosa.display.specshow(librosa.power_to_db(S, ref=np.max))
     
-    filename  = '/home/aigaf/Desktop/GitHub/Save_Transport/Untitled Folder/jpg/h/' + name + '.jpg'
+    filename  = '/home/aigaf/Desktop/GitHub/Save_Transport/RealTime/jpg/Untitled/' + name + '.jpg'
     plt.savefig(filename, dpi=400, bbox_inches='tight',pad_inches=0)
     plt.close()    
     fig.clf()
@@ -32,7 +32,9 @@ def create_spectrogram(filename,name):
     plt.close('all')
     del filename,name,clip,sample_rate,fig,ax,S
     
-    
+import sounddevice as sd
+from scipy.io.wavfile import write
+
 import sounddevice as sd
 from scipy.io.wavfile import write
 
@@ -45,15 +47,17 @@ for i in range(5):
     myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
     sd.wait()  # Wait until recording is finished
     
-    path = '/home/aigaf/Desktop/GitHub/Save_Transport/Untitled Folder/wav/'
+    path = '/home/aigaf/Desktop/GitHub/Save_Transport/RealTime/wav/'
     name = 'output' + str(i)
     
     write(path + name + '.wav', fs, myrecording) # конверт в wav и сохранение
     create_spectrogram(path + name + '.wav',name)
     
 liveMode = ImageDataGenerator(rescale=1./255)
-live_generator = liveMode.flow_from_directory('/home/aigaf/Desktop/GitHub/Save_Transport/Untitled Folder/jpg',
+live_generator = liveMode.flow_from_directory('/home/aigaf/Desktop/GitHub/Save_Transport/RealTime/jpg',
                                                target_size=(150, 150),batch_size=1)
 filenames = live_generator.filenames
 nb_samples = len(filenames)
 predict = model.predict_generator(live_generator,steps = nb_samples)
+
+print(predict)
