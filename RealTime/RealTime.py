@@ -24,7 +24,7 @@ def create_spectrogram(filename,name):
     S = librosa.feature.melspectrogram(y=clip, sr=sample_rate)
     librosa.display.specshow(librosa.power_to_db(S, ref=np.max))
     
-    filename  = '/home/aigaf/Desktop/GitHub/Save_Transport/RealTime/jpg/Untitled/' + name + '.jpg'
+    filename  = '/home/aigaf/Desktop/Repositories/Save_Transport/RealTime/jpg/Untitled/' + name + '.jpg'
     plt.savefig(filename, dpi=400, bbox_inches='tight',pad_inches=0)
     plt.close()    
     fig.clf()
@@ -47,14 +47,14 @@ for i in range(5):
     myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
     sd.wait()  # Wait until recording is finished
     
-    path = '/home/aigaf/Desktop/GitHub/Save_Transport/RealTime/wav/'
+    path = '/home/aigaf/Desktop/Repositories/Save_Transport/RealTime/wav/'
     name = 'output' + str(i)
     
     write(path + name + '.wav', fs, myrecording) # конверт в wav и сохранение
     create_spectrogram(path + name + '.wav',name)
     
 liveMode = ImageDataGenerator(rescale=1./255)
-live_generator = liveMode.flow_from_directory('/home/aigaf/Desktop/GitHub/Save_Transport/RealTime/jpg',
+live_generator = liveMode.flow_from_directory('/home/aigaf/Desktop/Repositories/Save_Transport/RealTime/jpg',
                                                target_size=(150, 150),batch_size=1)
 filenames = live_generator.filenames
 nb_samples = len(filenames)
