@@ -20,7 +20,6 @@
 
 accuracy = 98%
 confusion_matrix = [30, 1,
-
                      0, 29]
 
 
