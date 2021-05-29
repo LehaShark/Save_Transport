@@ -15,15 +15,12 @@ import keyboard
 
 
 # In[2]:
-
+import cv2
 
 def preprocessDataForNN(img_arr): 
-    
-    img_norm = img_arr/255
-    img_size = img_norm.resize((150, 150, 3))
-    img_compl = img_norm.reshape(-1, 150, 150, 3)
-    
-    return img_compl
+    f = cv2.resize(img_arr, (150, 150))
+    res = f.reshape(-1, 150, 150, 3)
+    return res
 
 
 # In[3]:
