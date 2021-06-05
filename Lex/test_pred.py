@@ -20,7 +20,7 @@ model = load_model(r'D:\save_115001.h5')
 
 n = 30
 generator = ImageDataGenerator(rescale=1./255)
-predict_generator = generator.flow_from_directory(r'D:\reposetory\Save_Transport\datasets\new_dataset\test',
+predict_generator = generator.flow_from_directory(r'D:\reposetory\Save_Transport\datasets\true_dataset\test',
                                                target_size=(150, 150),  shuffle = True, batch_size = n)
 
 

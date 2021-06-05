@@ -31,13 +31,13 @@ train_datagen = ImageDataGenerator(rescale=1.0/255, samplewise_center=True, samp
 test_datagen = ImageDataGenerator(rescale=1.0/255, samplewise_center=True, samplewise_std_normalization=True)
 
 train_generator = train_datagen.flow_from_directory(
-        r'D:\reposetory\Save_Transport\datasets\new_dataset\train',
+        r'D:\reposetory\Save_Transport\datasets\true_dataset\train',
         #'/home/timur/Documents/Projects/sound_classif/git/Save_Transport/datasets/new_dataset/train/',
         target_size=(150, 150),
         batch_size=10)
 
 valik = test_datagen.flow_from_directory(
-        r'D:\reposetory\Save_Transport\datasets\new_dataset\test',
+        r'D:\reposetory\Save_Transport\datasets\true_dataset\test',
         #'/home/timur/Documents/Projects/sound_classif/git/Save_Transport/datasets/new_dataset/test/',
         target_size=(150, 150),
         batch_size=10)
