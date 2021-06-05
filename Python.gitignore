@@ -16,6 +16,10 @@ __pycache__/
 # C extensions
 *.so
 
+# pycharm
+\.ipynb_checkpoints
+\.idea
+
 # Distribution / packaging
 .Python
 build/
@@ -146,3 +150,5 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
