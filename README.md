@@ -9,7 +9,7 @@
 
 В датасете в данный момент использовано разбиение сэмплов по секунде и переведено в спектрограммы в формате jpg.
 
-![unknown](https://user-images.githubusercontent.com/33295142/119869244-abfcca80-bf28-11eb-9d95-f6709a3be1d8.png)
+![unknown](https://github.com/LehaShark/Save_Transport/blob/main/datasets/dataset/train/one_sec_cut.png/old_0_10_01.png?raw=true)
 
 Из класса "cut" были взяты для валидационной выборки сэмплы: X. Тем самым после разделения посекундно получается 30 картинок. Остальные пошли на тренировочную выборку.
 
